@@ -10,35 +10,47 @@ public class Cinema {
         System.out.println("Enter the number of seats in each row:");
         int seatsPerRow = scanner.nextInt();
 
-        if (rows * seatsPerRow <= 60) {
-            System.out.println("Total income:");
-            System.out.printf("$%d", rows * seatsPerRow * 10);
-        } else {
-            int frontHalf = rows / 2;
-            int frontPrice = frontHalf * seatsPerRow * 10;
-            int backPrice = (rows - frontHalf) * seatsPerRow * 8;
-            System.out.println("Total income:");
-            System.out.printf("$%d", frontPrice + backPrice);
-        }
-    }
+        String[][] cinema = new String[rows + 1][seatsPerRow + 1];
 
-        /* System.out.println("Cinema:");
+        System.out.println("Cinema:");
         for (int i = 0; i < cinema.length; i++) {
             for (int j = 0; j < cinema[i].length; j++) {
-                if (i == 0 && j == 0){
-                   cinema[i][j] = " ";
+                if (i == 0 && j == 0) {
+                    cinema[i][j] = " ";
                 } else if (i == 0) {
-                    cinema[i][j] = j+" ";
+                    cinema[i][j] = " " + j;
                 } else if (j == 0) {
-                    cinema[i][j] = i+" ";
+                    cinema[i][j] = i + " ";
                 } else {
                     cinema[i][j] = "S ";
                 }
-
                 System.out.print(cinema[i][j]);
             }
             System.out.println();
         }
 
-    }*/
+        int cinemaSize = rows * seatsPerRow;
+        System.out.println("Enter a row number:");
+        int row = scanner.nextInt();
+        System.out.println("Enter a seat number in that row:");
+        int seat = scanner.nextInt();
+
+        int ticketPrice = 10;
+        boolean backSeat = row > (rows / 2);
+
+        if (cinemaSize > 60 && backSeat) {
+            ticketPrice = 8;
+        }
+
+        System.out.printf("Ticket price: $%d\n", ticketPrice);
+        cinema[row][seat] = "B";
+
+        System.out.println("Cinema:");
+        for (String[] printRows: cinema) {
+            for (String printSeats: printRows) {
+                System.out.print(printSeats);
+            }
+            System.out.println();
+        }
+    }
 }
