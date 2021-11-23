@@ -43,12 +43,12 @@ public class Cinema {
         }
 
         System.out.printf("Ticket price: $%d\n", ticketPrice);
-        cinema[row][seat] = "B";
+        cinema[row][seat] = "B ";
 
         System.out.println("Cinema:");
-        for (String[] printRows: cinema) {
-            for (String printSeats: printRows) {
-                System.out.print(printSeats);
+        for (String[] Rows: cinema) {
+            for (String Seats: Rows) {
+                System.out.print(Seats);
             }
             System.out.println();
         }
